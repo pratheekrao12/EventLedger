@@ -319,6 +319,32 @@ def compare_vendors():
               + "  " + note)
 
 
+# ---------------- demo helper: sample data ----------------
+
+def load_sample_data():
+    """Fill an empty tracker with example heads and quotes, so a demo
+    can skip the typing. No quote is selected and no payment is made."""
+    if len(heads) > 0:
+        print("  Sample data can only be loaded when there are no heads yet.")
+        return
+    # head name -> (budget, [(vendor, amount, rating), ...])
+    sample = {
+        "Venue": (50000.0, [("Grand Hall", 55000.0, 4.5),
+                            ("Royal Lawn", 45000.0, None)]),
+        "Food": (30000.0, [("Spice Kitchen", 28000.0, None),
+                           ("Tasty Bites", 32000.0, 3.5)]),
+        "Sound": (10000.0, [("DJ Beats", 8000.0, 4.0)]),
+    }
+    for name in sample:
+        budget = sample[name][0]
+        heads[name] = {"budget": budget, "quotes": [], "selected": None, "payments": []}
+        for vendor, amount, rating in sample[name][1]:
+            heads[name]["quotes"].append(
+                {"vendor": vendor, "amount": amount, "rating": rating})
+    print("  Loaded sample data: 3 heads (Venue, Food, Sound) with quotes.")
+    print("  No quote is selected yet and no payments are recorded.")
+
+
 # ---------------- main menu ----------------
 
 def show_menu():
@@ -331,6 +357,7 @@ def show_menu():
     print("6. Budget report")
     print("7. Over-budget alerts")
     print("8. Compare vendors")
+    print("9. Load sample data (for demo)")
     print("0. Exit")
 
 
@@ -354,6 +381,8 @@ def main():
             show_alerts()
         elif choice == "8":
             compare_vendors()
+        elif choice == "9":
+            load_sample_data()
         elif choice == "0":
             print("Goodbye!")
             break
