@@ -24,7 +24,7 @@ quote and payment in one place and warns as soon as a head goes over budget.
 ## How to run
 
 ```
-python eventledger.py
+python main.py
 ```
 
 Requires Python 3.6 or newer. No installation needed.
@@ -40,8 +40,11 @@ Requires Python 3.6 or newer. No installation needed.
 6. Budget report
 7. Over-budget alerts
 8. Compare vendors
+9. Load sample data (for demo)
 0. Exit
 ```
+
+Option 9 fills an empty tracker with example heads and quotes (Venue, Food and Sound) so the program can be demonstrated quickly. It only works when no heads exist, so it can never overwrite real data.
 
 ## Data design
 
@@ -113,10 +116,11 @@ TOTAL             80,000.00    83,000.00    65,000.00    18,000.00
 | 13 | Report with no heads | Asks to add a head first | Pass |
 | 14 | Type `abc` at the main menu | Invalid choice message | Pass |
 | 15 | Compare vendors with a vendor that has no rating | Shows `-` for rating | Pass |
+| 16 | Load sample data into an empty tracker | 3 heads with quotes loaded, nothing selected or paid | Pass |
+| 17 | Load sample data when heads already exist | Refused with a message | Pass |
 
 ## Possible improvements
 
 - Save and load data from a CSV file so it survives closing the program
 - List pending payments by due date
 - Edit or delete heads and quotes
-
