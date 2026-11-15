@@ -120,6 +120,3 @@ TOTAL             80,000.00    83,000.00    65,000.00    18,000.00
 - List pending payments by due date
 - Edit or delete heads and quotes
 
-## Author
-
-Built solo for the capstone review.
